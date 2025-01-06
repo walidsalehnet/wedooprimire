@@ -4,6 +4,13 @@ const message = document.getElementById("message");
 
 // استرجاع قائمة الـ IPs من LocalStorage
 const authorizedIPs = JSON.parse(localStorage.getItem("authorizedIPs")) || [];
+let authorizedIPs = JSON.parse(localStorage.getItem("authorizedIPs")) || [];
+
+// إضافة IP جديد
+if (!authorizedIPs.includes("10.35.52.28")) {
+    authorizedIPs.push("10.35.52.28");
+    localStorage.setItem("authorizedIPs", JSON.stringify(authorizedIPs));
+}
 
 // الحصول على IP المستخدم
 fetch("https://api.ipify.org?format=json")
